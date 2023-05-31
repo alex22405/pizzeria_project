@@ -35,6 +35,9 @@ class Adress
     #[ORM\OneToOne(inversedBy: 'adress', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $supplement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -108,6 +111,18 @@ class Adress
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getSupplement(): ?string
+    {
+        return $this->supplement;
+    }
+
+    public function setSupplement(?string $supplement): self
+    {
+        $this->supplement = $supplement;
 
         return $this;
     }
